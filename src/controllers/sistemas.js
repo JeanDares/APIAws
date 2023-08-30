@@ -14,7 +14,7 @@ class SistemaController {
     listar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const systemsData = yield (0, connection_1.filtraTabela)('SELECT s.*, v.versao AS versaoFTP, v.FTPEm ' +
+                const [systemsData ,flds ] = yield (0, connection_1.filtraTabela)('SELECT s.*, v.versao AS versaoFTP, v.FTPEm ' +
                     'FROM sistemas s ' +
                     'LEFT JOIN versao v ' +
                     'ON (s.id = v.id OR v.id = "*") ' +
