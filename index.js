@@ -11,7 +11,7 @@ const swagger_json_1 = __importDefault(require("./swagger.json"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 const port = constantes_1._WS_PORTA;
-app.use('/TsmVersao/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_json_1.default));
+app.use('/TsmVersao/Documentacao', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_json_1.default));
 app.get('/TsmVersao/GetSistemas', sistemas_1.default.listar);
 app.post('/TsmVersao/SetMenslidadeSistema', sistemas_1.default.setMensalidade);
 app.post('/TsmVersao/DeleteSistema', sistemas_1.default.deletarSistema);
