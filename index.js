@@ -12,11 +12,11 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 const port = constantes_1._WS_PORTA;
 app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_json_1.default));
-app.get('/sistemas', sistemas_1.default.listar);
-app.post('/setMensalidade', sistemas_1.default.setMensalidade);
-app.post('/DeleteSistema', sistemas_1.default.deletarSistema);
-app.post('/setVersao', sistemas_1.default.setVersao);
-app.post('/liberaVersao', sistemas_1.default.liberaVersao);
+app.get('/TsmVersao/GetSistemas', sistemas_1.default.listar);
+app.post('/TsmVersao/SetMenslidadeSistema', sistemas_1.default.setMensalidade);
+app.post('/TsmVersao/DeleteSistema', sistemas_1.default.deletarSistema);
+app.post('/TsmVersao/SetVersao', sistemas_1.default.setVersao);
+app.post('/TsmVersao/LiberaVersao', sistemas_1.default.liberaVersao);
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });
