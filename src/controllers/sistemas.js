@@ -14,16 +14,14 @@ class SistemaController {
     listar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const [systemsData ,flds ] = yield (0, connection_1.filtraTabela)('SELECT s.*, v.versao AS versaoFTP, v.FTPEm ' +
+                // Obter os dados enviados no corpo da solicitação POST
+                const requestData = req.body;
+                // Aqui você pode processar os dados, se necessário
+                const [systemsData, flds] = yield (0, connection_1.filtraTabela)('SELECT s.*, v.versao AS versaoFTP, v.FTPEm ' +
                     'FROM sistemas s ' +
                     'LEFT JOIN versao v ' +
                     'ON (s.id = v.id OR v.id = "*") ' +
-                    'AND s.sigla = v.sigla');
-                //('SELECT s.*, v.versao AS versaoFTP, v.FTPEm FROM sistemas s INNER JOIN versao v ON s.id = v.id AND s.sigla = v.sigla')
-                //('SELECT sis.*, ver.versao, ver.FTPEm '+  
-                //'FROM sistemas sis, versao ver '+ 
-                //'WHERE sis.id = ver.id AND sis.sigla = ver.sigla') 
-                // ('SELECT * FROM sistemas')
+                    'AND s.sigla = v.sigla ');
                 res.json(systemsData);
             }
             catch (error) {
@@ -56,6 +54,7 @@ class SistemaController {
     deletarSistema(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                console.log(req.body);
                 const { id, sigla } = req.body;
                 const con = (0, connection_1.getConnection)();
                 const systemsData = yield (0, connection_1.executaSql)('DELETE FROM sistemas WHERE id=? AND sigla=?', con, [id, sigla]);
